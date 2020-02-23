@@ -1,0 +1,149 @@
+@namespace ct 'http://gionkunz.github.com/chartist-js/ct';
+
+/* price chart */
+/* give the chart a border */
+svg.ct-chart-line {
+	border: 2px solid white;
+}
+
+/* remove points from the chart without losing our point labels */
+line.ct-point {
+	stroke-width: 0;
+}
+
+g.ct-series text.ct-label.ct-label-inline:last-child {
+	display: inline-block;
+}
+
+/* colour all the strokes to match the fuel type */
+g[ct|series-name="special-unleaded-91"] path.ct-line, g[ct|series-name="special-unleaded-91"] line.ct-point {
+	stroke: var(--special-unleaded-91);
+}
+g[ct|series-name="extra-95"] path.ct-line, g[ct|series-name="extra-95"] line.ct-point {
+	stroke: var(--extra-95);
+}
+g[ct|series-name="supreme+-98"] path.ct-line, g[ct|series-name="supreme+-98"] line.ct-point {
+	stroke: var(--supreme-98);
+}
+g[ct|series-name="special-e10-94"] path.ct-line, g[ct|series-name="special-e10-94"] line.ct-point {
+	stroke: var(--special-e10-94);
+}
+g[ct|series-name="special-diesel"] path.ct-line, g[ct|series-name="special-diesel"] line.ct-point {
+	stroke: var(--special-diesel);
+}
+g[ct|series-name="lpg"] path.ct-line, g[ct|series-name="lpg"] line.ct-point {
+	stroke: var(--lpg);
+}
+
+/* hide the series labels */
+g.ct-series text.ct-label {
+	display: none;
+}
+
+g.ct-series text.ct-label:last-child {
+	display: flex;
+}
+
+/* chartist-plugin-legend */
+.ct-chart {
+	position: relative;
+}
+.ct-legend {
+	position: relative;
+	z-index: 10;
+	list-style: none;
+	text-align: center;
+}
+.ct-legend li {
+	position: relative;
+	padding-left: 23px;
+	margin-right: 10px;
+	margin-bottom: 3px;
+	cursor: pointer;
+	display: inline-block;
+}
+.ct-legend li:before {
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	left: 0;
+	content: '';
+	border: 3px solid transparent;
+	border-radius: 2px;
+}
+.ct-legend li.inactive:before {
+	background: transparent;
+}
+.ct-legend.ct-legend-inside {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.ct-legend.ct-legend-inside li{
+	display: block;
+	margin: 0;
+}
+.ct-legend .ct-series-0:before {
+	background-color: #d70206;
+	border-color: #d70206;
+}
+.ct-legend .ct-series-1:before {
+	background-color: #f05b4f;
+	border-color: #f05b4f;
+}
+.ct-legend .ct-series-2:before {
+	background-color: #f4c63d;
+	border-color: #f4c63d;
+}
+.ct-legend .ct-series-3:before {
+	background-color: #d17905;
+	border-color: #d17905;
+}
+.ct-legend .ct-series-4:before {
+	background-color: #453d3f;
+	border-color: #453d3f;
+}
+
+.ct-chart-line-multipleseries .ct-legend .ct-series-0:before {
+ background-color: #d70206;
+ border-color: #d70206;
+}
+
+.ct-chart-line-multipleseries .ct-legend .ct-series-1:before {
+ background-color: #f4c63d;
+ border-color: #f4c63d;
+}
+
+.ct-chart-line-multipleseries .ct-legend li.inactive:before {
+ background: transparent;
+}
+
+.ct-legend .fueltype-chart-special-unleaded-91:before {
+	background-color: var(--special-unleaded-91);
+	border-color: var(--special-unleaded-91);
+}
+
+.ct-legend .fueltype-chart-extra-95:before {
+	background-color: var(--extra-95);
+	border-color: var(--extra-95);
+}
+
+.ct-legend .fueltype-chart-supreme\+-98:before {
+	background-color: var(--supreme-98);
+	border-color: var(--supreme-98);
+}
+
+.ct-legend .fueltype-chart-special-e10-94:before {
+	background-color: var(--special-e10-94);
+	border-color: var(--special-e10-94);
+}
+
+.ct-legend .fueltype-chart-special-diesel:before {
+	background-color: var(--special-diesel);
+	border-color: var(--special-diesel);
+}
+
+.ct-legend .fueltype-chart-lpg:before {
+	background-color: var(--lpg);
+	border-color: var(--lpg);
+}
