@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,600&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css');
 @import url('https://unpkg.com/purecss@1.0.1/build/pure-min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css');
 
 :root {
 	--special-unleaded-91: #006DB2;
 	--extra-95: #34ACE0;
 	--supreme-98: #E82438;
 	--special-e10-94: #00934D;
-	/* --special-diesel: #020307; */
 	--special-diesel: rgb(230, 136, 61);
 	--lpg: #AAAAAA;
 

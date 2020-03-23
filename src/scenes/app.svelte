@@ -1,69 +1,22 @@
-<script>
-	import { writable, get } from 'svelte/store';
-	import { priceChartRange, chartRanges } from './stores';
-	import { getDataWithTimestamp, getFuelTypes } from './data';
-	const ranges = get(chartRanges);
-	const changePriceChartRange = (index) => {
-		return ($event) => {
-			priceChartRange.set(index);
-
-			// get new data based on the timestamp
-			const timestamp = ranges[index].timestamp();
-			getDataWithTimestamp(timestamp.toISOString());
-		}
-	};
-	import { onMount, onDestroy } from 'svelte';
-	let rangeIndex = get(priceChartRange);
-	const rangeUnsub = priceChartRange.subscribe(value => rangeIndex = value);
-	onDestroy(rangeUnsub);
-
-
-	import { setClient } from 'svelte-apollo';
-	import { client } from './graphql';
-	onMount(() => {
-		setClient(client);
-
-		const timestamp = ranges[rangeIndex].timestamp();
-		getDataWithTimestamp(timestamp.toISOString());
-		getFuelTypes();
-	});
-
-	// components
-	import PriceChart from './components/price-chart.svelte';
-	import FuelTypes from './components/fuels.svelte';
-	import Login from './components/login.svelte';
-</script>
-
 <div class="content">
-	<div class="row around-lg">
-		<div class="col-lg-8">
-			<label class="dropdown overlay">
-				<div class="dd-button">
-					{ranges[rangeIndex].name}
-				</div>
-
-				<input type="checkbox" class="dd-input" id="check" />
-
-				<ul class="dd-menu">
-					{#each ranges as { name }, index}
-						<li on:click={changePriceChartRange(index)}>{name}</li>
-					{/each}
-				</ul>
-			</label>
-
-			<PriceChart range={ranges[rangeIndex]} />
-		</div>
-		<div class="col-lg-3">
+	<div class="row around-xs">
+		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-11">
 			<div class="wrap-right-panel">
 				<FuelTypes />
 				<br />
 				<br />
-				<!-- <Login /> -->
+				<Login />
 			</div>
 		</div>
 	</div>
 
 	<div class="floating-version">
+		<div class="changelog-modal">
+			<Modal closeButton={false}>
+				<ChangelogToggle />
+			</Modal>
+		</div>
+		&nbsp;
 		v{'VERSION'}
 	</div>
 </div>
@@ -81,6 +34,10 @@
 		position: absolute;
 		bottom: 0;
 		right: 0;
+	}
+
+	.changelog-modal {
+		display: inline-block;
 	}
 
 	/* Dropdown */
@@ -169,3 +126,40 @@
 		border-bottom: 1px solid #cccccc;
 	}
 </style>
+
+<script>
+	import { writable, get } from 'svelte/store';
+	import { priceChartRange, chartRanges } from 'store/stores';
+	import { getDataWithTimestamp } from 'store/data';
+	const ranges = get(chartRanges);
+	const changePriceChartRange = (index) => {
+		return ($event) => {
+			priceChartRange.set(index);
+
+			// get new data based on the timestamp
+			const timestamp = ranges[index].timestamp();
+			getDataWithTimestamp(timestamp.toISOString());
+		}
+	};
+	import { onMount, onDestroy } from 'svelte';
+	let rangeIndex = get(priceChartRange);
+	const rangeUnsub = priceChartRange.subscribe(value => rangeIndex = value);
+	onDestroy(rangeUnsub);
+
+
+	import { setClient } from 'svelte-apollo';
+	import { client } from 'store/graphql';
+	onMount(() => {
+		setClient(client);
+
+		const timestamp = ranges[rangeIndex].timestamp();
+		getDataWithTimestamp(timestamp.toISOString());
+	});
+
+	// components
+	// import PriceChart from 'components/price-chart';
+	import FuelTypes from 'components/fuels';
+	import Login from 'components/login';
+	import Modal from 'svelte-simple-modal';
+	import ChangelogToggle from 'components/changelog/toggle';
+</script>

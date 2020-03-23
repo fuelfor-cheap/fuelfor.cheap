@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import autoPreprocess from 'svelte-preprocess';
 import replace from '@rollup/plugin-replace';
+import includePaths from 'rollup-plugin-includepaths';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -43,13 +44,18 @@ export default {
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
 		resolve({
 			browser: true,
-			dedupe: ['svelte']
+			dedupe: ['svelte', 'svelte/transition', 'svelte/internal']
 		}),
 
 		commonjs({
 			namedExports: {
         'subscriptions-transport-ws': ['SubscriptionClient']
       }
+		}),
+
+		includePaths({
+			paths: ['src'],
+			extensions: ['.js', '.svelte']
 		}),
 
 		// In dev mode, call `npm run start` once

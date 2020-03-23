@@ -5,15 +5,14 @@ import { split } from 'apollo-link';
 import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import { IS_PROD, GRAPHQL_API_HOST } from './config';
+import { IS_PROD, GRAPHQL_API_HOST } from 'config/config';
 
 // setup the graphql client
-const domain = `${GRAPHQL_API_HOST}/v1/graphql`;
 const httpLink = new HttpLink({
-  uri: `${IS_PROD ? 'https' : 'http'}://${domain}`
+  uri: `${IS_PROD ? 'https' : 'http'}://${GRAPHQL_API_HOST}`
 });
 const wsLink = new WebSocketLink({
-  uri: `${IS_PROD ? 'wss' : 'ws'}://${domain}`,
+  uri: `${IS_PROD ? 'wss' : 'ws'}://${GRAPHQL_API_HOST}`,
   options: {
     reconnect: true
   }

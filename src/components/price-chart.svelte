@@ -6,7 +6,7 @@
   import ctPointLabels from 'chartist-plugin-pointlabels';
   import legend from 'chartist-plugin-legend';
 
-  import { prices as allPrices, fuels } from './../stores';
+  import { prices as allPrices, fuels } from 'store/stores';
   let fuelTypes = {};
   let history = [];
   const fuelUnsub = fuels.subscribe(value => fuelTypes = value);

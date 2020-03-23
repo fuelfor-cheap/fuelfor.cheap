@@ -1,6 +1,6 @@
 {
   "name": "fuel-for-cheap",
-  "version": "v0.0.003-alpha",
+  "version": "v0.0.004-alpha",
   "config": {
     "imageRepo": "rg.nl-ams.scw.cloud/lynn/fuelforcheap",
     "imageName": "fuelforcheap",
@@ -47,6 +47,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "apollo-boost": "^0.4.7",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
@@ -61,14 +62,18 @@
     "chartist-plugin-pointlabels": "0.0.6",
     "crypto": "^1.0.1",
     "d3": "^5.15.0",
+    "fa-svelte": "^3.1.0",
     "graphql": "^14.6.0",
     "md5": "^2.2.1",
+    "moment": "^2.24.0",
     "node-sass": "^4.13.1",
+    "rollup-plugin-includepaths": "^0.2.3",
     "sirv-cli": "^0.4.4",
     "subscriptions-transport-ws": "^0.9.16",
     "svelte-apollo": "^0.3.0",
     "svelte-preprocess": "^3.3.0",
     "svelte-preprocess-sass": "^0.2.0",
+    "svelte-simple-modal": "^0.3.0",
     "uuid": "^3.4.0"
   }
 }
