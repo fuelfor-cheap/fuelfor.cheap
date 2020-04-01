@@ -32,8 +32,8 @@
         class:selected-border={selectedFuelType.id === id}
         on:click={selectFuelTypeForLock(id, price, datetime)}
       >
-        <div class="row around-xs middle-xs">
-          <div class="col-xs-6 align-right">
+        <div class="row center-xs middle-xs">
+          <div class="col-xs-4 align-right">
             <span class:green={lockFuelType === id}>
               {#if lockFuelType !== 'null' && lockFuelType !== null && lockFuelType === id}
                 {lockCentsPer}<span class="lock-price-current">&nbsp;/&nbsp;{price}</span>
@@ -42,8 +42,9 @@
               {/if}
             </span>
           </div>
+          <!-- if a fuel price change exists and there's no fuel lock... -->
           {#if Object.keys(fuelPriceChange).includes(id) && !(lockFuelType !== 'null' && lockFuelType !== null && lockFuelType === id)}
-            <div class="col-xs-4">
+            <div class="col-lg-5 col-xs-7">
               <span>
                 {#if fuelPriceChange[id] > 0}
                   <Icon icon={faLongArrowAltUp} class="red" />
@@ -53,8 +54,6 @@
                   <Icon icon={faLongArrowAltDown} class="green" />
                 {/if}
               </span>
-            </div>
-            <div class="col-xs-2">
               <span class="price-change" style="min-width:1rem;">
                 {#if fuelPriceChange[id] > 0}
                   +{fuelPriceChange[id].toFixed(2)}
@@ -63,6 +62,9 @@
                 {/if}
               </span>
             </div>
+            <!-- <div class="col-xs-2">
+              
+            </div> -->
           {/if}
         </div>
       </div>
@@ -82,10 +84,16 @@
     box-sizing: border-box;
     flex-grow: 1;
     width: 100%;
-    padding: .8rem 1rem;
+    padding: .6rem .6rem;
     overflow: hidden;
     list-style: none;
     font-size: 1.1rem;
+  }
+
+  @media(max-width: 320px) {
+    .cell {
+      font-size: 1rem;
+    }
   }
 
   .table--cols2 > .cell {

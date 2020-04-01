@@ -23,7 +23,7 @@
 
 <style>
 	.content {
-		margin: 4.5rem .2rem;
+		padding: 4.5rem .2rem;
 	}
 
 	.wrap-right-panel {

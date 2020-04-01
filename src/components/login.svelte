@@ -43,13 +43,13 @@
           disabled={selectedFuelType === null || lockFuelType !== 'null' && lockFuelType !== null}
           on:click={lock}
         >
-          Click to lock
+          Lock
           {#if selectedFuelTypeID !== null}
-            @ {selectedFuelPrice} per L
+            @ {selectedFuelPrice} per L?
           {/if}
         </button>
       </div>
-      <div class="col-xs-3">
+      <div class="col-xs-4">
         <button
           type="button"
           class="pure-button pure-button-block"
