@@ -1,7 +1,7 @@
 const development = {
   GRAPHQL_API_HOST: '192.168.99.100:8081/v1/graphql',
   IS_PROD: false,
-  FFC_API_HOST: 'localhost:8080/api/v1'
+  FFC_API_HOST: 'localhost:1337/api/v1'
 };
 const production = {
   GRAPHQL_API_HOST: 'api.fuelfor.cheap/v1/graphql',

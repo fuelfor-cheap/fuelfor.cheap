@@ -228,9 +228,11 @@
       return;
     }
 
-    // loop over the list of locks and find our most recent one
     const now = new Date().getTime();
-    const locks = fuelLocks.filter(l => new Date(l.expires).getTime() > now);
+    // filter locks that have expired
+    let locks = fuelLocks.filter(l => new Date(l.expires).getTime() > now);
+    // filter locks that have been redeemed
+    locks = locks.filter(l => !l.has_redeemed);
     console.log(locks);
 
     if (locks.length === 0) {
