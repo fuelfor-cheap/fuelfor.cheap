@@ -1,0 +1,22 @@
+name: image deployment
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: martinbeentjes/npm-get-version-action@v1.0.0
+        id: version
+        name: get current package version
+      - name: build the image
+        run: docker build . -t rg.nl-ams.scw.cloud/lynn/fuelforcheap:$CURRENT_VERSION
+        env:
+          - CURRENT_VERSION=steps.id.outputs.current-version
+      - name: push the image
+        run: docker push rg.nl-ams.scw.cloud/lynn/fuelforcheap:$CURRENT_VERSION
+        env:
+          - CURRENT_VERSION=steps.id.outputs.current-version
