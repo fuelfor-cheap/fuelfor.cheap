@@ -1,0 +1,34 @@
+name: image deployment
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - uses: azure/docker-login@v1
+        with:
+          login-server: rg.nl-ams.scw.cloud/lynn
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - uses: martinbeentjes/npm-get-version-action@v1.0.0
+        id: version
+        name: get current package version
+      - run: npm install
+      - name: build svelte
+        run: npm run build
+      - name: build the image
+        run: docker build . -t rg.nl-ams.scw.cloud/lynn/fuelforcheap:$CURRENT_VERSION
+        env:
+          CURRENT_VERSION: ${{ steps.version.outputs.current-version }}
+      - name: push the image
+        run: docker push rg.nl-ams.scw.cloud/lynn/fuelforcheap:$CURRENT_VERSION
+        env:
+          CURRENT_VERSION: ${{ steps.version.outputs.current-version }}
