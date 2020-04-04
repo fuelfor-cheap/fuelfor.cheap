@@ -384,7 +384,6 @@
   }
 
   $: title = 'Fuel lock';
-  $: console.log(accountName);
   $: if (accountName && accountName !== 'null') {
     title = `Hi there ${accountName}`;
   } else {

@@ -180,7 +180,6 @@
 
     // query graphql to get the latitude/longitude of the fuel price
     const fuelPriceDetails = await getLatLongFromFuelPrice(selectedFuelDatetime, selectedFuelTypeID);
-    console.log(fuelPriceDetails);
 
     // construct the payload
     const payload = {
@@ -233,7 +232,6 @@
     let locks = fuelLocks.filter(l => new Date(l.expires).getTime() > now);
     // filter locks that have been redeemed
     locks = locks.filter(l => !l.has_redeemed);
-    console.log(locks);
 
     if (locks.length === 0) {
       fuelAPILockFuelType.update(() => null);

@@ -138,8 +138,6 @@
         // filter the prices that's between now and our maximum past date
         // data.price_history = data.price_history.filter(p => new Date(p.datetime).getTime() > new Date(thePast).getTime());
 
-        console.log(data);
-
         const [ columns, series ] = render(data);
         options = {
           labels: columns,
