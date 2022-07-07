@@ -42,7 +42,7 @@
     "fa-svelte": "^3.1.0",
     "graphql": "^14.6.0",
     "md5": "^2.2.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "node-sass": "^4.13.1",
     "rollup-plugin-includepaths": "^0.2.3",
     "sirv-cli": "^0.4.4",
