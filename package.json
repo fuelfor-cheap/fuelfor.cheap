@@ -38,7 +38,7 @@
     "chartist-plugin-legend": "^0.6.2",
     "chartist-plugin-pointlabels": "0.0.6",
     "crypto": "^1.0.1",
-    "d3": "^5.15.0",
+    "d3": "^7.6.1",
     "fa-svelte": "^3.1.0",
     "graphql": "^14.6.0",
     "md5": "^2.2.1",
